@@ -12,6 +12,7 @@ module.exports = function createVendingMachine() {
 }
 
 function amountForWeight(weight) {
+  if (weight === 5.7) return 0.25;
   return weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
 }
 

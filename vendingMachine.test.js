@@ -2,6 +2,7 @@ const createVendingMachine = require('./vendingMachine');
 
 const NICKEL_WEIGHT = 5.0;
 const DIME_WEIGHT = 2.3;
+const QUARTER_WEIGHT = 5.7;
 
 let vendingMachine;
 
@@ -30,4 +31,10 @@ it('displays the amount for two nickels', function () {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.10");
+});
+
+it('displays the amount for one quarter', function () {
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+
+    expect(vendingMachine.output()).toBe("$0.25");
 });
