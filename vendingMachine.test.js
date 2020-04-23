@@ -1,6 +1,6 @@
 const createVendingMachine = require('./vendingMachine');
 
-it('should pass', function () {
+it('display insert coin when no coins are inserted', function () {
     const vendingMachine = createVendingMachine();
     expect(vendingMachine.output()).toBe("INSERT COIN");
 });

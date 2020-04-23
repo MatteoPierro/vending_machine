@@ -1,8 +1,8 @@
 Matteo
 Mustafa
-Manuelle D
-Arno N
-Stijn
+Manuelle
+Arno D
+Stijn N
 
 # Vending Machine Kata
 
