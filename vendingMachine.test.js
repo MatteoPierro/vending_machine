@@ -24,3 +24,10 @@ it('displays the amount for a dime', function () {
 
     expect(vendingMachine.output()).toBe("$0.10");
 });
+
+it('displays the amount for two nickels', function () {
+    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+
+    expect(vendingMachine.output()).toBe("$0.10");
+});

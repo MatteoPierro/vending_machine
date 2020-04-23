@@ -4,10 +4,10 @@ const NICKEL_AMOUNT = 0.05;
 const DIME_AMOUNT = 0.10;
 
 module.exports = function createVendingMachine() {
-  let currentAmount;
+  let currentAmount = 0;
   return {
     receiveCoin: (weight) => {
-      currentAmount = weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
+      currentAmount += weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
     },
     output: () => currentAmount ? `\$${currentAmount.toFixed(2)}` : INSERT_COIN_STATE
   }
