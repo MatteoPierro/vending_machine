@@ -1,3 +1,10 @@
 it('should pass', function () {
-    expect(true).toBe(false)
+    const vendingMachine = createVendingMachine();
+    expect(vendingMachine.output()).toBe("INSERT COIN");
 });
+
+function createVendingMachine() {
+    return {
+        output: () => "INSERT COIN"
+    }
+}
