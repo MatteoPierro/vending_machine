@@ -1,8 +1,8 @@
-Matteo
-Mustafa
+Matteo D
+Mustafa N
 Manuelle
-Arno D
-Stijn N
+Arno
+Stijn
 
 # Vending Machine Kata
 
