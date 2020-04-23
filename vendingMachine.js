@@ -1,7 +1,9 @@
 const INSERT_COIN_STATE = "INSERT COIN"
 
 module.exports = function createVendingMachine() {
+  let hasCoin = false;
   return {
-    output: () => INSERT_COIN_STATE
+    receiveCoin: () => { hasCoin = true },
+    output: () => hasCoin ? "$0.05" : INSERT_COIN_STATE
   }
 }
