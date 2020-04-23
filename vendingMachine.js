@@ -6,13 +6,15 @@ const DIME_AMOUNT = 0.10;
 module.exports = function createVendingMachine() {
   let currentAmount = 0;
   return {
-    receiveCoin: (weight) => {
-      currentAmount += amountForWeight(weight);
-    },
-    output: () => currentAmount ? `\$${currentAmount.toFixed(2)}` : INSERT_COIN_STATE
+    receiveCoin: (weight) => currentAmount += amountForWeight(weight),
+    output: () => currentAmount ? formatAmount(currentAmount) : INSERT_COIN_STATE
   }
 }
 
 function amountForWeight(weight) {
   return weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
+}
+
+function formatAmount(amount) {
+  return `$${amount.toFixed(2)}`;
 }
