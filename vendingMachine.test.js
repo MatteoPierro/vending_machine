@@ -3,11 +3,14 @@ const createVendingMachine = require('./vendingMachine');
 const NICKEL_WEIGHT = 5.0;
 const DIME_WEIGHT = 2.3;
 const QUARTER_WEIGHT = 5.7;
+const PENNY_WEIGHT = 3.11
 
 let vendingMachine;
+let returnCoin;
 
 beforeEach(() => {
-    vendingMachine = createVendingMachine();
+    returnCoin = jest.fn();
+    vendingMachine = createVendingMachine(returnCoin);
 });
 
 it('display insert coin when no coins are inserted', function () {
@@ -37,4 +40,11 @@ it('displays the amount for one quarter', function () {
     vendingMachine.receiveCoin(QUARTER_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.25");
+});
+
+it('returns the penny to the user', function () {
+    vendingMachine.receiveCoin(PENNY_WEIGHT);
+
+    expect(vendingMachine.output()).toBe("INSERT COIN");
+    expect(returnCoin).toHaveBeenCalled();
 });
