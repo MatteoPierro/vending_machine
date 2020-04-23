@@ -2,6 +2,8 @@ const INSERT_COIN_STATE = "INSERT COIN";
 const NICKEL_WEIGHT = 5.0;
 const NICKEL_AMOUNT = 0.05;
 const DIME_AMOUNT = 0.10;
+const QUARTER_WEIGHT = 5.7;
+const QUARTER_AMOUNT = 0.25;
 
 module.exports = function createVendingMachine() {
   let currentAmount = 0;
@@ -12,7 +14,7 @@ module.exports = function createVendingMachine() {
 }
 
 function amountForWeight(weight) {
-  if (weight === 5.7) return 0.25;
+  if (weight === QUARTER_WEIGHT) return QUARTER_AMOUNT;
   return weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
 }
 
