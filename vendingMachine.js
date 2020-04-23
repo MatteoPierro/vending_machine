@@ -15,7 +15,8 @@ module.exports = function createVendingMachine() {
 
 function amountForWeight(weight) {
   if (weight === QUARTER_WEIGHT) return QUARTER_AMOUNT;
-  return weight === NICKEL_WEIGHT ? NICKEL_AMOUNT : DIME_AMOUNT;
+  if (weight === NICKEL_WEIGHT) return NICKEL_AMOUNT;
+  return DIME_AMOUNT;
 }
 
 function formatAmount(amount) {
