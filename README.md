@@ -1,7 +1,7 @@
 Matteo 
-Mustafa D
-Manuelle N
-Arno 
+Mustafa 
+Manuelle D
+Arno N
 Stijn 
 
 # Vending Machine Kata

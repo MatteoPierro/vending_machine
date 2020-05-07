@@ -15,7 +15,7 @@ const DIME = {
 
 const COINS = [ QUARTER, NICKEL, DIME ];
 
-module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
+module.exports = function createVendingMachine(returnCoin, dispenseProduct, timer) {
   let currentAmount = 0;
   let productDispensed = false;
   return {
@@ -24,6 +24,9 @@ module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
         dispenseProduct(button);
         currentAmount = 0;
         productDispensed = true;
+        timer(2000, () => {
+          productDispensed = false;
+        });
       }
     },
     receiveCoin: (weight) => {

@@ -8,11 +8,21 @@ const PENNY_WEIGHT = 3.11
 let vendingMachine;
 let returnCoin;
 let dispenseProduct;
+let timer;
+let timerCallback;
+
+function flushTimer() {
+    timerCallback.forEach((c) => c());
+}
 
 beforeEach(() => {
     returnCoin = jest.fn();
     dispenseProduct = jest.fn();
-    vendingMachine = createVendingMachine(returnCoin, dispenseProduct);
+    timerCallback = [];
+    timer = jest.fn((time, callback) => {
+        timerCallback.push(callback);
+    });
+    vendingMachine = createVendingMachine(returnCoin, dispenseProduct, timer);
 });
 
 it('display insert coin when no coins are inserted', () => {
@@ -97,4 +107,17 @@ it('displays thank you message after product has been dispensed', () => {
     vendingMachine.dispenseProduct(1);
 
     expect(vendingMachine.output()).toBe("THANK YOU");
+});
+
+it('displays insert coin messsage after thank you message', () => {
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+
+    vendingMachine.dispenseProduct(1);
+
+    expect(vendingMachine.output()).toBe("THANK YOU");
+    flushTimer();
+    expect(vendingMachine.output()).toBe("INSERT COIN");
 });
