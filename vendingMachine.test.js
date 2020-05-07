@@ -68,3 +68,9 @@ it('dispenses the first product if 1$ is inserted', () => {
     expect(dispenseProduct).toHaveBeenCalledTimes(1);
     expect(dispenseProduct).toHaveBeenCalledWith(1);
 });
+
+it('does not dispense the first product if no money is inserted', () => {
+    vendingMachine.dispenseProduct(1);
+
+    expect(dispenseProduct).not.toHaveBeenCalled();
+});

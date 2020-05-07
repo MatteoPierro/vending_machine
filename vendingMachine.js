@@ -19,7 +19,9 @@ module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
   let currentAmount = 0;
   return {
     dispenseProduct: (button) => {
-      dispenseProduct(button);
+      if (currentAmount === 1.0) {
+        dispenseProduct(button);
+      }
     },
     receiveCoin: (weight) => {
       if (isValidCoin(weight)) {
