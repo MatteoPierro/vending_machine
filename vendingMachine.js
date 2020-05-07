@@ -17,11 +17,13 @@ const COINS = [ QUARTER, NICKEL, DIME ];
 
 module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
   let currentAmount = 0;
+  let productDispensed = false;
   return {
     dispenseProduct: (button) => {
       if (currentAmount === 1.0) {
         dispenseProduct(button);
         currentAmount = 0;
+        productDispensed = true;
       }
     },
     receiveCoin: (weight) => {
@@ -32,7 +34,15 @@ module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
         returnCoin();
       }
     },
-    output: () => currentAmount ? formatAmount(currentAmount) : INSERT_COIN_STATE
+    output: () => {
+      if (currentAmount) {
+        return formatAmount(currentAmount);
+      }
+      if (productDispensed) {
+        return "THANK YOU";
+      }
+      return INSERT_COIN_STATE;
+    }
   }
 }
 

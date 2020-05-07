@@ -87,3 +87,14 @@ it('dispenses the first product only once when 1$ is inserted', () => {
     expect(dispenseProduct).toHaveBeenCalledTimes(1);
     expect(dispenseProduct).toHaveBeenCalledWith(1);
 });
+
+it('displays thank you message after product has been dispensed', () => {
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+
+    vendingMachine.dispenseProduct(1);
+
+    expect(vendingMachine.output()).toBe("THANK YOU");
+});
