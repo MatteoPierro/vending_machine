@@ -19,6 +19,8 @@ const DIME = {
   amount: DIME_AMOUNT
 };
 
+const COINS = [ QUARTER, NICKEL, DIME ];
+
 module.exports = function createVendingMachine(returnCoin) {
   let currentAmount = 0;
   return {
@@ -28,9 +30,10 @@ module.exports = function createVendingMachine(returnCoin) {
 }
 
 function amountForWeight(weight, returnCoin) {
-  if (weight === QUARTER.weight) return QUARTER.amount;
-  if (weight === NICKEL.weight) return NICKEL.amount;
-  if (weight === DIME.weight) return DIME.amount;
+  const coin = COINS.find((coin) => coin.weight === weight);
+  if (coin) {
+    return coin.amount;
+  }
   returnCoin();
 }
 
