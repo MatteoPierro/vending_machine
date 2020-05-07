@@ -19,8 +19,8 @@ module.exports = function createVendingMachine(returnCoin) {
   let currentAmount = 0;
   return {
     receiveCoin: (weight) => {
-      const coin = COINS.find((coin) => coin.weight === weight);
-      if (coin) {
+      if (isValidCoin(weight)) {
+        const coin = COINS.find((coin) => coin.weight === weight);
         currentAmount += coin.amount;
       } else {
         returnCoin();
@@ -32,4 +32,9 @@ module.exports = function createVendingMachine(returnCoin) {
 
 function formatAmount(amount) {
   return `$${amount.toFixed(2)}`;
+}
+
+function isValidCoin(weight){
+  const coin = COINS.find((coin) => coin.weight === weight);
+  return Boolean(coin);
 }
