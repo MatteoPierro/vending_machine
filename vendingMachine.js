@@ -1,22 +1,16 @@
 const INSERT_COIN_STATE = "INSERT COIN";
-const NICKEL_WEIGHT = 5.0;
-const NICKEL_AMOUNT = 0.05;
-const DIME_AMOUNT = 0.10;
-const QUARTER_WEIGHT = 5.7;
-const QUARTER_AMOUNT = 0.25;
-const DIME_WEIGHT = 2.3;
 
 const QUARTER = {
-  weight: QUARTER_WEIGHT,
-  amount: QUARTER_AMOUNT
+  weight: 5.7,
+  amount: 0.25
 };
 const NICKEL = {
-  weight: NICKEL_WEIGHT,
-  amount: NICKEL_AMOUNT
+  weight: 5.0,
+  amount: 0.05
 };
 const DIME = {
-  weight: DIME_WEIGHT,
-  amount: DIME_AMOUNT
+  weight: 2.3,
+  amount: 0.10
 };
 
 const COINS = [ QUARTER, NICKEL, DIME ];
