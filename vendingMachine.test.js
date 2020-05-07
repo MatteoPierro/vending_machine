@@ -58,8 +58,10 @@ it('does not reject a valid coin', () => {
 });
 
 it('dispenses the first product if 1$ is inserted', () => {
-    vendingMachine.receiveCoin(NICKEL_WEIGHT);
-    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
+    vendingMachine.receiveCoin(QUARTER_WEIGHT);
 
     vendingMachine.dispenseProduct(1);
 
