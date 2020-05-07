@@ -7,10 +7,12 @@ const PENNY_WEIGHT = 3.11
 
 let vendingMachine;
 let returnCoin;
+let dispenseProduct;
 
 beforeEach(() => {
     returnCoin = jest.fn();
-    vendingMachine = createVendingMachine(returnCoin);
+    dispenseProduct = jest.fn();
+    vendingMachine = createVendingMachine(returnCoin, dispenseProduct);
 });
 
 it('display insert coin when no coins are inserted', function () {
@@ -53,4 +55,14 @@ it('it does not reject a valid coin', function () {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
     expect(returnCoin).not.toHaveBeenCalled();
+});
+
+it('it dispenses the selected object if the exact amount of money is already there', () => {
+    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+
+    vendingMachine.dispenseProduct(1);
+
+    expect(dispenseProduct).toHaveBeenCalledTimes(1);
+    expect(dispenseProduct).toHaveBeenCalledWith(1);
 });

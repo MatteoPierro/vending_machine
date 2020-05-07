@@ -15,9 +15,12 @@ const DIME = {
 
 const COINS = [ QUARTER, NICKEL, DIME ];
 
-module.exports = function createVendingMachine(returnCoin) {
+module.exports = function createVendingMachine(returnCoin, dispenseProduct) {
   let currentAmount = 0;
   return {
+    dispenseProduct: (button) => {
+      dispenseProduct(button);
+    },
     receiveCoin: (weight) => {
       if (isValidCoin(weight)) {
         const coin = COINS.find((coin) => coin.weight === weight);
