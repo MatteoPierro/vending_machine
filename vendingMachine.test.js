@@ -15,49 +15,49 @@ beforeEach(() => {
     vendingMachine = createVendingMachine(returnCoin, dispenseProduct);
 });
 
-it('display insert coin when no coins are inserted', function () {
+it('display insert coin when no coins are inserted', () => {
     expect(vendingMachine.output()).toBe("INSERT COIN");
 });
 
-it('displays the amount for a nickel', function () {
+it('displays the amount for a nickel', () => {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.05");
 });
 
-it('displays the amount for a dime', function () {
+it('displays the amount for a dime', () => {
     vendingMachine.receiveCoin(DIME_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.10");
 });
 
-it('displays the amount for two nickels', function () {
+it('displays the amount for two nickels', () => {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.10");
 });
 
-it('displays the amount for one quarter', function () {
+it('displays the amount for one quarter', () => {
     vendingMachine.receiveCoin(QUARTER_WEIGHT);
 
     expect(vendingMachine.output()).toBe("$0.25");
 });
 
-it('returns the penny to the user', function () {
+it('returns the penny to the user', () => {
     vendingMachine.receiveCoin(PENNY_WEIGHT);
 
     expect(vendingMachine.output()).toBe("INSERT COIN");
     expect(returnCoin).toHaveBeenCalled();
 });
 
-it('it does not reject a valid coin', function () {
+it('does not reject a valid coin', () => {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
     expect(returnCoin).not.toHaveBeenCalled();
 });
 
-it('it dispenses the selected object if the exact amount of money is already there', () => {
+it('dispenses the first product if 1$ is inserted', () => {
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
     vendingMachine.receiveCoin(NICKEL_WEIGHT);
 
