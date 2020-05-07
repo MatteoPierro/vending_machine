@@ -48,3 +48,9 @@ it('returns the penny to the user', function () {
     expect(vendingMachine.output()).toBe("INSERT COIN");
     expect(returnCoin).toHaveBeenCalled();
 });
+
+it('it does not reject a valid coin', function () {
+    vendingMachine.receiveCoin(NICKEL_WEIGHT);
+
+    expect(returnCoin).not.toHaveBeenCalled();
+});
