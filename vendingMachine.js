@@ -6,6 +6,19 @@ const QUARTER_WEIGHT = 5.7;
 const QUARTER_AMOUNT = 0.25;
 const DIME_WEIGHT = 2.3;
 
+const QUARTER = {
+  weight: QUARTER_WEIGHT,
+  amount: QUARTER_AMOUNT
+};
+const NICKEL = {
+  weight: NICKEL_WEIGHT,
+  amount: NICKEL_AMOUNT
+};
+const DIME = {
+  weight: DIME_WEIGHT,
+  amount: DIME_AMOUNT
+};
+
 module.exports = function createVendingMachine(returnCoin) {
   let currentAmount = 0;
   return {
@@ -15,9 +28,9 @@ module.exports = function createVendingMachine(returnCoin) {
 }
 
 function amountForWeight(weight, returnCoin) {
-  if (weight === QUARTER_WEIGHT) return QUARTER_AMOUNT;
-  if (weight === NICKEL_WEIGHT) return NICKEL_AMOUNT;
-  if (weight === DIME_WEIGHT) return DIME_AMOUNT;
+  if (weight === QUARTER.weight) return QUARTER.amount;
+  if (weight === NICKEL.weight) return NICKEL.amount;
+  if (weight === DIME.weight) return DIME.amount;
   returnCoin();
 }
 
