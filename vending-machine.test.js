@@ -1,4 +1,4 @@
-const createVendingMachine = require('./vendingMachine');
+const createVendingMachine = require('./vending-machine');
 
 const NICKEL_WEIGHT = 5.0;
 const DIME_WEIGHT = 2.3;
